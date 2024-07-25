@@ -1,8 +1,9 @@
-// $primary: #000;
-// $secondary: $gray-600 !default;
-// $success: $green !default;
-// $info: $cyan !default;
-// $warning: $yellow !default;
-// $danger: $red !default;
-// $light: $gray-100 !default;
-// $dark: $gray-900 !default;
+$primary: #111111;
+$secondary: #d80026;
+
+$navbar-padding-y: 1rem;
+$navbar-padding-x: 1rem;
+$navbar-nav-link-padding-x: 1rem;
+
+$dropdown-spacer: 0.9rem;
+$dropdown-bg: $primary;
