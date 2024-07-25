@@ -7,3 +7,32 @@ $navbar-nav-link-padding-x: 1rem;
 
 $dropdown-spacer: 0.9rem;
 $dropdown-bg: $primary;
+
+body {
+  position: relative;
+}
+
+.cus-header-bg {
+  position: absolute;
+  width: 100vw;
+  height: 40vh;
+  top: 72px;
+  left: 0;
+  z-index: 1;
+  background: center / cover no-repeat url("../../public/img/bg.png");
+  padding: 1rem;
+}
+
+.main-header {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  z-index: 10;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .cus-header-bg {
+    height: 100px;
+  }
+}
