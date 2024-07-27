@@ -8,6 +8,11 @@ $navbar-nav-link-padding-x: 1rem;
 $dropdown-spacer: 0.9rem;
 $dropdown-bg: $primary;
 
+$card-border-color: transparent;
+$card-border-radius: 0;
+
+$container-padding-x: 0;
+
 body {
   position: relative;
 }
@@ -18,17 +23,17 @@ body {
   height: 40vh;
   top: 72px;
   left: 0;
-  z-index: 1;
   background: center / cover no-repeat url("../../public/img/bg.png");
   padding: 1rem;
 }
 
 .main-header {
-  position: absolute;
-  top: 72px;
-  left: 0;
-  z-index: 10;
+  position: relative;
   padding: 1rem;
+}
+
+.cus-main-content {
+  position: relative;
 }
 
 @media screen and (max-width: 1200px) {
