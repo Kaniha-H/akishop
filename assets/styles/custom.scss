@@ -36,6 +36,16 @@ body {
   position: relative;
 }
 
+.cus-gift-card {
+  background: center / cover no-repeat url("../../public/img/gift-card-bg.png");
+}
+
+.gift-card-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 1200px) {
   .cus-header-bg {
     height: 100px;

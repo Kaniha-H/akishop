@@ -23,7 +23,8 @@
 </header>
 
 <main>
-    <div class="container-fluid mb-3">
+    {# products section #}
+    <div class="container-fluid my-5">
         <div class="row px-0 mx-0">
             <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
                 <div class="card bg-body-secondary">
@@ -97,6 +98,22 @@
                         <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
                         <small class="small">324.99€</small>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# gift card #}
+    <div class="cus-gift-card container-fluid text-start p-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-12 col-md-8">
+                    <h3>cartes cadeaux</h3>
+                    <p class="gift-card-title">offrir une carte cadeau</p>
+                    <button type="button" class="btn btn-secondary">Achetez maintenant</button>
+                </div>
+                <div class="col-sm-12 col-md-4 d-sm-none">
+                    <img src="{{ asset('img/cards.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
