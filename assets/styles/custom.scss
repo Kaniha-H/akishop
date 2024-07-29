@@ -46,6 +46,22 @@ body {
   text-transform: uppercase;
 }
 
+.cus-footer {
+  background: center / cover no-repeat
+    url("../../public/img/bg-footer-dark.png");
+
+  li {
+    list-style-type: none;
+    text-transform: uppercase;
+    margin: 2rem 2rem 0 2rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .cus-header-bg {
     height: 100px;
