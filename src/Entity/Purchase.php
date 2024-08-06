@@ -180,4 +180,10 @@ class Purchase
 
         return $this;
     }
+    
+    public function __toString()
+    {
+        return $this->fullname;
+    }
+    
 }

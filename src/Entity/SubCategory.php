@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\SubCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CategoryRepository::class)]
-class Category
+#[ORM\Entity(repositoryClass: SubCategoryRepository::class)]
+class SubCategory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,15 +21,18 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\ManyToOne(inversedBy: 'subCategories')]
+    private ?Category $categories = null;
+
     /**
-     * @var Collection<int, SubCategory>
+     * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(targetEntity: SubCategory::class, mappedBy: 'categories')]
-    private Collection $subCategories;
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'subCategory')]
+    private Collection $products;
 
     public function __construct()
     {
-        $this->subCategories = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,35 +64,47 @@ class Category
         return $this;
     }
 
+    public function getCategories(): ?Category
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Category $categories): static
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
     public function __toString()
     {
         return $this->name;
     }
 
     /**
-     * @return Collection<int, SubCategory>
+     * @return Collection<int, Product>
      */
-    public function getSubCategories(): Collection
+    public function getProducts(): Collection
     {
-        return $this->subCategories;
+        return $this->products;
     }
 
-    public function addSubCategory(SubCategory $subCategory): static
+    public function addProduct(Product $product): static
     {
-        if (!$this->subCategories->contains($subCategory)) {
-            $this->subCategories->add($subCategory);
-            $subCategory->setCategories($this);
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setSubCategory($this);
         }
 
         return $this;
     }
 
-    public function removeSubCategory(SubCategory $subCategory): static
+    public function removeProduct(Product $product): static
     {
-        if ($this->subCategories->removeElement($subCategory)) {
+        if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($subCategory->getCategories() === $this) {
-                $subCategory->setCategories(null);
+            if ($product->getSubCategory() === $this) {
+                $product->setSubCategory(null);
             }
         }
 

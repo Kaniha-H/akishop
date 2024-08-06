@@ -25,10 +25,6 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
-
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
@@ -40,6 +36,9 @@ class Product
      */
     #[ORM\OneToMany(targetEntity: PurchaseItem::class, mappedBy: 'product')]
     private Collection $purchaseitems;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?SubCategory $subCategory = null;
 
     public function __construct()
     {
@@ -83,18 +82,6 @@ class Product
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): static
-    {
-        $this->category = $category;
 
         return $this;
     }
@@ -149,6 +136,23 @@ class Product
                 $purchaseitem->setProduct(null);
             }
         }
+
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?SubCategory $subCategory): static
+    {
+        $this->subCategory = $subCategory;
 
         return $this;
     }
