@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\SubCategory;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class SubCategoryCrudController extends AbstractCrudController
@@ -20,7 +18,7 @@ class SubCategoryCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name'),
-            TextEditorField::new('slug'),
+            TextField::new('slug'),
             AssociationField::new('categories')->autocomplete()
         ];
     }

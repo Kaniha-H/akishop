@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+Page de {{ product.name }}
+{% endblock %}
+
+{% block body %}
+<ol class="breadcrumb mt-2 ps-3">
+    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Accueil</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('product_category', {'slug': product.subCategory.slug}) }}">{{ product.subCategory.name }}</a></li>
+    <li class="breadcrumb-item active">{{ product.name }}</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="row me-0">
+        <div class="col-sm-12 col-md-7 col-lg-7 d-flex justify-content-center align-items-center bg-light bg-gradient">
+            <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="{{ product.name }}" class="img-fluid"
+                style="max-width: 500px">
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-5 px-5">
+            <h1>{{ product.name|upper }}</h1>
+            <p>{{ product.price }}</p>
+            <a href="#" class="btn btn-danger px-4 py-2">AJOUTER AU PANIER</a>
+            <hr>
+            <div>
+                <p>Description</p>
+                <p>{{ product.description|raw }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
