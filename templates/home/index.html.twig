@@ -9,13 +9,13 @@
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/ahri.png') }}" class="d-block w-100 fluid" alt="...">
+                    <img src="{{ asset('img/ahri.png') }}" class="d-block w-100 fluid" alt="ahri statue">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/lol.png') }}" class="d-block w-100 fluid" alt="...">
+                    <img src="{{ asset('img/lol.png') }}" class="d-block w-100 fluid" alt="league of legends produits">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/valo.png') }}" class="d-block w-100 fluid" alt="...">
+                    <img src="{{ asset('img/valo.png') }}" class="d-block w-100 fluid" alt="valorant produits">
                 </div>
             </div>
         </div>
@@ -26,80 +26,17 @@
     {# products section #}
     <div class="container-fluid my-5">
         <div class="row px-0 mx-0">
+            {% for product in products %}
             <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
                 <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('uploads/images/' ~ product.picture) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
+                        <h6 class="card-title">{{ product.name|u.truncate(50, '...') }}</h6>
+                        <small class="small">{{ product.price }}</small>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row px-0 mx-0">
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('img/statue-ahri.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">Statue Ahri légende immortalisée Hall of</h6>
-                        <small class="small">324.99€</small>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
