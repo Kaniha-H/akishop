@@ -62,6 +62,24 @@ body {
   }
 }
 
+.cus-login-bg,
+.cus-register-bg {
+  background: center / cover no-repeat url("../../public/img/bg-arcane.jpg");
+
+  input {
+    width: 90%;
+    height: 60px;
+    margin: 1rem 0;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgba(186, 186, 186, 0.1);
+    border: solid 2px transparent;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .cus-header-bg {
     height: 100px;
