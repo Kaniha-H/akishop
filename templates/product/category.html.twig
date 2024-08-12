@@ -11,18 +11,12 @@ Catégorie : {{ category.name }}
 </ol>
 
 <div class="container-fluid my-2">
-        <div class="row px-0 mx-0">
-            {% for product in category.products %}
-            <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
-                <div class="card bg-body-secondary">
-                    <img src="{{ asset('uploads/images/' ~ product.picture) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">{{ product.name|u.truncate(50, '...') }}</h6>
-                        <small class="small">{{ product.price }}</small>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+    <div class="row px-0 mx-0">
+        {% for product in category.products %}
+        <div class="col-sm-12 col-md-6 col-lg-3 ps-0 pe-sm-0 pe-md-1 pe-lg-1 pb-1">
+            {% include "product/_product_card.html.twig" with { 'product': product } %}
         </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
