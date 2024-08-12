@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier!{% endblock %}
+
+{% block body %}
+<ol class="breadcrumb mt-2 ps-3">
+    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Accueil</a></li>
+    <li class="breadcrumb-item"><a href="#">Panier</a></li>
+</ol>
+
+<div class="container-fluid">
+    <div class="container d-flew flex-columns justify-content-center align-items-center">
+        <h1>Panier - {{ items|length }}</h1>
+
+        {% if items | length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price|amount }}</td>
+                    <td>
+                        <a href="{{ path('cart_decrement', {'id': item.product.id}) }}"
+                            class="btn btn-sm btn-secondary">
+                            <i class="fa-solid fa-minus"></i>
+                        </a>
+                        {{ item.qty }}
+                        <a href="{{ path('app_cart_add', {'id': item.product.id}) }}?returnToCart=true"
+                            class="btn btn-sm btn-secondary">
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
+                    </td>
+                    <td>{{ item.total|amount }}</td>
+                    <td>
+                        <a href="{{ path('cart_delete', {'id': item.product.id}) }}" class="btn btn-sm btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total : </td>
+                    <td colspan="2">{{ total|amount }}</td>
+                </tr>
+            </tfoot>
+        </table>
+        {% else %}
+        <div class="border border-end-0 border-start-0 my-5 d-flex justify-content-start align-items-center"
+            style="height: 10rem;">
+            <h2>Votre panier est vide.</h2>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

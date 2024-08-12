@@ -19,8 +19,8 @@ Page de {{ product.name }}
         </div>
         <div class="col-sm-12 col-md-5 col-lg-5 px-5">
             <h1>{{ product.name|upper }}</h1>
-            <p>{{ product.price }}</p>
-            <a href="#" class="btn btn-danger px-4 py-2">AJOUTER AU PANIER</a>
+            <p>{{ product.price|amount }}</p>
+            <a href="{{ path('app_cart_add', {'id': product.id}) }}" class="btn btn-danger px-4 py-2">AJOUTER AU PANIER</a>
             <hr>
             <div>
                 <p>Description</p>

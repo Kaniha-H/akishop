@@ -1,0 +1,14 @@
+<a href="{{ path('product_show', {'category_slug': product.subCategory.slug, 'slug' : product.slug}) }}" class="link-underline link-underline-opacity-0">
+    <div class="cus-product-card card bg-body-secondary">
+        <img src="{{ asset('uploads/images/' ~ product.picture) }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+            <div class="d-flex flew-row justify-content-between align-items-baseline">
+                <h6 class="card-title link-underline-opacity-0">{{ product.name|u.truncate(40, '...') }}</h6>
+                <a href="{{ path('app_cart_add', {'id': product.id}) }}" class="nav-link">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </a>
+            </div>
+            <small class="small">{{ product.price|amount }}</small>
+        </div>
+    </div>
+</a>
