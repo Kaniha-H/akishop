@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+Mes Commandes
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+    <h1>Mes commandes</h1>
+
+    {% if purchases|length > 0 %}
+    <table class="table my-3">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Adresse</th>
+                <th>Date de commande</th>
+                <th>Produits</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in purchases %}
+            <tr>
+                <th scope="row">{{ p.id }}</th>
+                <td>{{ p.address }}<br>{{ p.postalCode }}, {{ p.city }}</td>
+                <td>{{ p.purchaseAt | date('d/m/Y H:i') }}</td>
+                <td>
+                    <ul>
+                        {% for item in p.purchaseItems %}
+                        <li>{{ item.quantity }} x {{ item.productName }} {{ item.total|amount }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ p.total|amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2>Vous n'avez pas de commandes</h2>
+    {% endif %}
+</div>
+{% endblock %}

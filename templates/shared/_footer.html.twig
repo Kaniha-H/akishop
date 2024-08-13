@@ -1,8 +1,13 @@
 <footer class="cus-footer container-fluid p-3 text-center text-white">
     <ul class="d-flex align-items-center justify-content-center">
-        <li><a href="">vetements</a></li>
-        <li><a href="">art</a></li>
-        <li><a href="">accessoires</a></li>
+        {% for category in categoryRepository.findAll() %}
+        <li class="nav-item">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{ category.name }}
+            </a>
+        </li>
+        {% endfor %}
     </ul>
     <span>© Akishop 2024</span>
 </footer>

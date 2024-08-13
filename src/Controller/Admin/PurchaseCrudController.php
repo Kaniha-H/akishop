@@ -4,8 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Purchase;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PurchaseCrudController extends AbstractCrudController
@@ -17,14 +18,17 @@ class PurchaseCrudController extends AbstractCrudController
         return Purchase::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('fullname'),
+            TextField::new('address'),
+            TextField::new('city'),
+            TextField::new('postalcode'),
+            IntegerField::new('total'),
+            DateTimeField::new('purchaseAt'),
+            AssociationField::new('status'),
+            AssociationField::new('user'),
         ];
     }
-    */
 }

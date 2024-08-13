@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PurchaseRepository::class)]
 class Purchase
 {
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PAID = 'PAID';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
