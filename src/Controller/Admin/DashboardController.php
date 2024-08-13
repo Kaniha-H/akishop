@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\Purchase;
-use App\Entity\PurchaseItem;
-use App\Entity\Status;
 use App\Entity\SubCategory;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -37,8 +35,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Categories', 'fa-solid fa-layer-group', Category::class);
         yield MenuItem::linkToCrud('SubCategories', 'fa-solid fa-layer-group', SubCategory::class);
         yield MenuItem::linkToCrud('Purchases', 'fa-solid fa-cart-shopping', Purchase::class);
-        yield MenuItem::linkToCrud('PurchasesItem', 'fa-solid fa-shirt', PurchaseItem::class);
-        yield MenuItem::linkToCrud('Status', 'fas fa-circle-info', Status::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
     }
 }

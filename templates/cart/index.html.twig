@@ -55,12 +55,53 @@
                 </tr>
             </tfoot>
         </table>
+
+        {% if app.user %}
+        <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                Valider votre commande
+            </button>
+        </p>
+        <div style="position: absolute; top: 0; right: 0;">
+            <div class="collapse collapse-horizontal bg-dark" id="collapseWidthExample">
+                <div class="card card-body" style="width: 390px;">
+                    <h2>Mes informations de livraison</h2>
+                    {{ form_start(confirmationForm, {'action': path('purchase_confirm')}) }}
+
+                    {{ form_widget(confirmationForm.fullName) }}
+                    {{ form_widget(confirmationForm.address) }}
+                    {{ form_widget(confirmationForm.postalCode) }}
+                    {{ form_widget(confirmationForm.city) }}
+
+                    <button type="submit" class="btn btn-secondary my-3 px-5 py-2">Continuer -></button>
+
+                    {{ form_end(confirmationForm) }}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="mt-5">
+            <h2>Vous devez être connecté pour confirmer cette commande</h2>
+            <div class="my-3">
+                <a href="{{ path('app_login') }}" class="btn rounded-pill btn-secondary px-5 py-2 me-2">Se connecter</a>
+                ou
+                <a href="{{ path('app_register') }}" class="ms-2">créer un compte</a>
+            </div>
+        </div>
+        {% endif %}
+
         {% else %}
         <div class="border border-end-0 border-start-0 my-5 d-flex justify-content-start align-items-center"
             style="height: 10rem;">
             <h2>Votre panier est vide.</h2>
         </div>
+
+        <a href="{{ path('homepage') }}" class="btn rounded-pill btn-secondary mb-5 mb-3 px-5 py-2">Commencer à acheter
+            maintenant</a>
         {% endif %}
     </div>
+
+
 </div>
 {% endblock %}
