@@ -33,8 +33,11 @@ class Purchase
     #[ORM\Column]
     private ?int $total = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $status = 'PENDING';
+
     #[ORM\Column]
-    private ?\DateTimeImmutable $purchaseAt = null;
+    private ?\DateTimeImmutable $purchasedAt = null;
 
     /**
      * @var Collection<int, PurchaseItem>
@@ -44,9 +47,6 @@ class Purchase
 
     #[ORM\ManyToOne(inversedBy: 'purchases')]
     private ?User $user = null;
-
-    #[ORM\ManyToOne(inversedBy: 'purchases')]
-    private ?Status $status = null;
 
     public function __construct()
     {
@@ -118,14 +118,26 @@ class Purchase
         return $this;
     }
 
-    public function getPurchaseAt(): ?\DateTimeImmutable
+    public function getStatus(): ?string
     {
-        return $this->purchaseAt;
+        return $this->status;
     }
 
-    public function setPurchaseAt(\DateTimeImmutable $purchaseAt): static
+    public function setStatus(string $status): static
     {
-        $this->purchaseAt = $purchaseAt;
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPurchasedAt(): ?\DateTimeImmutable
+    {
+        return $this->purchasedAt;
+    }
+
+    public function setPurchasedAt(\DateTimeImmutable $purchasedAt): static
+    {
+        $this->purchasedAt = $purchasedAt;
 
         return $this;
     }
@@ -168,18 +180,6 @@ class Purchase
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getStatus(): ?Status
-    {
-        return $this->status;
-    }
-
-    public function setStatus(?Status $status): static
-    {
-        $this->status = $status;
 
         return $this;
     }

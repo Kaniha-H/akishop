@@ -26,8 +26,7 @@ class PurchaseCrudController extends AbstractCrudController
             TextField::new('city'),
             TextField::new('postalcode'),
             IntegerField::new('total'),
-            DateTimeField::new('purchaseAt'),
-            AssociationField::new('status'),
+            DateTimeField::new('purchasedAt'),
             AssociationField::new('user'),
         ];
     }

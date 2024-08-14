@@ -5,8 +5,6 @@ namespace App\Purchase;
 use App\Cart\CartService;
 use App\Entity\Purchase;
 use App\Entity\PurchaseItem;
-use App\Entity\Status;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 
@@ -25,19 +23,13 @@ class PurchasePersister
         $this->em = $em;
     }
 
-    public function storePurchase(Purchase $purchase, Status $status) 
-    {
-
-        $status = new Status;
-        $status->setName('PENDING');
-        
+    public function storePurchase(Purchase $purchase) 
+    {   
         $purchase
             ->setUser($this->security->getUser())
-            ->setPurchaseAt(now())
-            ->setTotal($this->cartService->getTotal())
-            ->setStatus($status);
+            ->setPurchasedAt(now())
+            ->setTotal($this->cartService->getTotal());
 
-        $this->em->persist($status);
         $this->em->persist($purchase);
 
         foreach ($this->cartService->getDetailedCartItems() as $cartItem) {
