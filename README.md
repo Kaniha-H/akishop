@@ -15,19 +15,19 @@ Fonctionnalités :
 - possibilité de payer avec Stripe
 - voir ses commandes seulement quand l'utilisateur est connecté
 
-<img src="" />
+<img src="https://github.com/Kaniha-H/akishop/blob/main/assets/img/aki-home.png" />
 
 Vue de la liste des produits :
 
-<img src="" />
+<img src="https://github.com/Kaniha-H/akishop/blob/main/assets/img/list-products.png" />
 
 Vue de la création d'un produit :
 
-<img src="" />
+<img src="https://github.com/Kaniha-H/akishop/blob/main/assets/img/ajout-product.png" />
 
 Vue de l'édition d'un produit :
 
-<img src="" />
+<img src="https://github.com/Kaniha-H/akishop/blob/main/assets/img/edit-product.png" />
 
 ### Commande pour la création d'un admin :
 
