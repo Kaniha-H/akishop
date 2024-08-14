@@ -4,7 +4,6 @@ namespace App\Controller\Purchase;
 
 use App\Cart\CartService;
 use App\Entity\Purchase;
-use App\Entity\Status;
 use App\Event\PurchaseSuccessEvent;
 use App\Repository\PurchaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,7 +16,7 @@ class PurchasePaymentSuccessController extends AbstractController
 {
     #[Route('/purchase/terminate/{id}', name: 'purchase_payment_success')]
     #[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour confirmer une commande')]
-    public function success($id, PurchaseRepository $purchaseRepository, EntityManagerInterface $em, CartService $cartService, EventDispatcherInterface $dispatcher, Status $status) {
+    public function success($id, PurchaseRepository $purchaseRepository, EntityManagerInterface $em, CartService $cartService, EventDispatcherInterface $dispatcher) {
         $purchase = $purchaseRepository->find($id);
 
         if(
@@ -29,12 +28,7 @@ class PurchasePaymentSuccessController extends AbstractController
             return $this->redirectToRoute('purchase_index');
         }
 
-        $status = new Status;
-        $status = $status->setName('PAID');
-
-        $purchase->setStatus($status);
-        
-        $em->persist($status);
+        $purchase->setStatus(Purchase::STATUS_PAID);
         $em->flush();
 
         $cartService->empty();

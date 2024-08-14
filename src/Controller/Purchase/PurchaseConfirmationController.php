@@ -4,7 +4,6 @@ namespace App\Controller\Purchase;
 
 use App\Cart\CartService;
 use App\Entity\Purchase;
-use App\Entity\Status;
 use App\Form\CartConfirmationType;
 use App\Purchase\PurchasePersister;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,7 +27,7 @@ class PurchaseConfirmationController extends AbstractController
 
     #[Route('/purchase/confirm', name: 'purchase_confirm')]
     #[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour confirmer une commande')]
-    public function confirm(Request $request, Status $status) 
+    public function confirm(Request $request) 
     {
         $form = $this->createForm(CartConfirmationType::class);
 
@@ -51,7 +50,7 @@ class PurchaseConfirmationController extends AbstractController
         /** @var Purchase */
         $purchase = $form->getData();
 
-        $this->persister->storePurchase($purchase, $status);
+        $this->persister->storePurchase($purchase);
 
         return $this->redirectToRoute('purchase_payment_form', [
             'id' => $purchase->getId()
